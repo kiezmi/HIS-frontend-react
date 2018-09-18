@@ -5,7 +5,7 @@ import store from './store';
 import Login from './login';
 import Dashboard from './dashboard';
 import NotFound from './notFound';
-import { BrowserRouter, Switch, Route,Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 class App extends Component {
   render() {
@@ -17,7 +17,6 @@ class App extends Component {
               <Route path='/' component={Dashboard} exact />
               <Route path='/login' component={Login} exact />
               <Route component={NotFound} />
-              <Redirect to="/login"/>
             </Switch>
           </BrowserRouter>
         </div>

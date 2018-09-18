@@ -3,26 +3,24 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 class dashboard extends React.Component {
-    logout() {
+    logout = () => {
         this.props.logoutStore();
-    }
+    };
     render() {
-        if (this.props.auth) {
+        if (!this.props.auth) {
             return <Redirect to="/login" />
         } else {
             return (
                 <section className="dashboard">
                     Dashboard
                 <h5>
-                        {
-                            this.props.auth ?
-                                this.props.auth.name + 'user is logged in' :
-                                'no user logged in'
-                        }
+                        {this.props.auth ?
+                            this.props.auth.name + 'user is logged in' :
+                            'no user logged in'}
                     </h5>
-                    {this.props.auth && <button onClick={this.logout.blind(this)}>Logout</button>}
+                    {this.props.auth && <button onClick={this.logout}>Logout</button>}
                 </section>
-            )
+            );
         }
     }
 }
@@ -31,17 +29,17 @@ const mapStateToProps = (state) => {
     return {
         auth: state.auth
     };
-}
-const mapDispatchToProps = (dispatch) => {
+};
+const mapDispatchToProps = dispatch => {
     return {
         logoutStore: () => dispatch({
             type: 'USER_LOGGED_OUT'
         })
     };
-}
+};
 
 const Dashboard =
 
-    connect(mapStateToProps, mapDispatchToProps)(dashboard)
+    connect(mapStateToProps, mapDispatchToProps)(dashboard);
 
 export default Dashboard;

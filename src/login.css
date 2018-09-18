@@ -1,13 +1,14 @@
-.login{
+.login {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    background: #ccc;
+
 }
 
-.login form{
+.login form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,17 +16,16 @@
     background: white;
     border-radius: 10px;
     padding: 3em;
-
 }
 
-.login error{
+.login error {
     background: white;
     border-radius: 10px;
     padding: 1em;
-    color:red;
+    color: red;
 }
 
-.login >*{
-margin:1em 0;
-
+.login > * {
+    margin: 1em 0;
+    min-width: 60vw;
 }

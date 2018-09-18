@@ -11,7 +11,7 @@ class login extends React.Component {
             username: '',
             password: '',
             error: null
-        }
+        };
     }
     login(ev) {
         ev.preventDefault();
@@ -23,37 +23,40 @@ class login extends React.Component {
             this.props.history.push('/');
         } else {
             // invalid user
-            this.setState({ error: "Username or Password invalid" })
+            this.setState({ error: "Username or Password invalid" });
         }
     }
     handleChange(ev) {  //Ejecutas un handleChange para los 2 porque el primero lee la propiedad name y despues busca el on change
-        this.setState({ [ev.target.name]: ev.target.value, erro: null });
+        this.setState({ [ev.target.name]: ev.target.value, error: null });
     }
     
     render() {
         if(this.props.auth){
             return <Redirect to="/"/>
-        }else{
+        }
         return (
             <section className="login">
-                {
-                    this.state.eror ? (<div className="error">{this.error}</div>) : null
-                }
-                <form onSubmint={this.login.blind(this)}>
-                    <input type="text" name="username" value={this.state.username} onChange={this.handleChange.blind(this)}>User</input>
-                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange.blind(this)}>Password</input>
+                {this.state.eror ? (<div className="error">{this.state.error}</div>) : null}
+                <form onSubmit={this.login.bind(this)}>
+                    <input type="text" name="username" value={this.state.username} onChange={this.handleChange.bind(this)}>User</input>
+                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange.bind(this)}>Password</input>
                     <button type="submit">Entrar</button>
                 </form>
             </section>
         );
-    }}
+    }
 }
-const Login = connect((state) => ({}), (dispach) => ({
-    loginStore: (user) => dispach({
+
+const Login = connect(state => ({
+    auth: state.auth
+}), 
+dispach => ({
+    loginStore: user => 
+    dispach({
         type: 'USER_LOGGED_IN',
         payload: user
     })
 })
-)(login)
+)(login);
 
 export default Login;
