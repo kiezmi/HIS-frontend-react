@@ -26,7 +26,9 @@ class login extends React.Component {
             this.setState({ error: "Username or Password invalid" });
         }
     }
-    handleChange(ev) {  //Ejecutas un handleChange para los 2 porque el primero lee la propiedad name y despues busca el on change
+    handleChange(ev) {  //Ejecutas un handleChange para los 2 porque el primero lee la
+        // propiedad name y despues busca en password del evento
+        console.dir(ev.target)
         this.setState({ [ev.target.name]: ev.target.value, error: null });
     }
     
@@ -38,8 +40,8 @@ class login extends React.Component {
             <section className="login">
                 {this.state.eror ? (<div className="error">{this.state.error}</div>) : null}
                 <form onSubmit={this.login.bind(this)}>
-                    <input type="text" name="username" value={this.state.username} onChange={this.handleChange.bind(this)}>User</input>
-                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange.bind(this)}>Password</input>
+                    <input type="text" name="username" value={this.state.username} onChange={this.handleChange.bind(this)}/>
+                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
                     <button type="submit">Entrar</button>
                 </form>
             </section>
@@ -51,11 +53,11 @@ const Login = connect(state => ({
     auth: state.auth
 }), 
 dispach => ({
-    loginStore: user => 
-    dispach({
+    loginStore: user => dispach({
         type: 'USER_LOGGED_IN',
         payload: user
     })
+    
 })
 )(login);
 
