@@ -5,7 +5,11 @@ import store from './store';
 import Login from './login';
 import Dashboard from './dashboard';
 import NotFound from './notFound';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import PatientList from './patientList';
+import HistoryList from './historieList';
+import PatientDetails from './patientDetails';
+import HistoryDetails from './historyDetails';
 
 class App extends Component {
   render() {
@@ -16,6 +20,11 @@ class App extends Component {
             <Switch>
               <Route path='/' component={Dashboard} exact />
               <Route path='/login' component={Login} exact />
+              <Route path='/patientList' component={PatientList} exact />
+              <Route path='/historieList' component={HistoryList} exact />
+              <Route path='/patientDetails/uid' component={PatientDetails} exact />
+              <Route path='/historyDetails/uid' component={HistoryDetails} exact />
+              
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>

@@ -20,7 +20,6 @@ class login extends React.Component {
         if (user) {
             //valid user
             this.props.loginStore(user);
-            this.props.history.push('/');
         } else {
             // invalid user
             this.setState({ error: "Username or Password invalid" });
@@ -31,17 +30,17 @@ class login extends React.Component {
         console.dir(ev.target)
         this.setState({ [ev.target.name]: ev.target.value, error: null });
     }
-    
+
     render() {
-        if(this.props.auth){
-            return <Redirect to="/"/>
+        if (this.props.auth) {
+            return <Redirect to="/" />
         }
         return (
             <section className="login">
                 {this.state.eror ? (<div className="error">{this.state.error}</div>) : null}
                 <form onSubmit={this.login.bind(this)}>
-                    <input type="text" name="username" value={this.state.username} onChange={this.handleChange.bind(this)}/>
-                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange.bind(this)}/>
+                    <input type="text" name="username" value={this.state.username} onChange={this.handleChange.bind(this)} />
+                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange.bind(this)} />
                     <button type="submit">Entrar</button>
                 </form>
             </section>
@@ -49,16 +48,11 @@ class login extends React.Component {
     }
 }
 
-const Login = connect(state => ({
-    auth: state.auth
-}), 
-dispach => ({
-    loginStore: user => dispach({
-        type: 'USER_LOGGED_IN',
-        payload: user
+const Login = connect(state =>
+    ({ auth: state.auth }),
+    dispach => ({
+        loginStore: user => dispach({ type: 'USER_LOGGED_IN', payload: user })
     })
-    
-})
 )(login);
 
 export default Login;

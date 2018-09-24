@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+
 
 class dashboard extends React.Component {
     logout = () => {
@@ -10,15 +11,51 @@ class dashboard extends React.Component {
         if (!this.props.auth) {
             return <Redirect to="/login" />
         } else {
+            const { role, name, uid } = this.props.auth;
+            const links = [{
+                to: "/patientList",
+                text: "Patient List",
+                roles: ["admin", "doctor"]
+            }, {
+                to: "/historiesList",
+                text: "histories List",
+                roles: ["admin", "doctor"]
+            },
+            {
+                to: "/createUser",
+                text: "Create User",
+                roles: ["admin", "technical"]
+            },
+            {
+                to: "/patientDetails" + uid,
+                text: "Patient List",
+                roles: ["admin", "patient"]
+            },
+            {
+                to: "/historyDetails" + uid,
+                text: "History Details",
+                roles: ["admin", "patient"]
+            }
+
+            ];
             return (
                 <section className="dashboard">
-                    Dashboard
-                <h5>
+                    <h1> Dashboard</h1>
+                    <h5>Tu rol es: {role}{" "}
+                        {this.props.auth && <button onClick={this.logout}>Logout</button>}</h5>
+                    <h5>
                         {this.props.auth ?
-                            this.props.auth.name + 'user is logged in' :
+                            name + 'user is logged in' :
                             'no user logged in'}
                     </h5>
-                    {this.props.auth && <button onClick={this.logout}>Logout</button>}
+
+                    {
+                        links.map(
+                            item => (item.roles.includes(role) &&
+                                <Link to={item.to}>{item.text}</Link>)
+                        )
+                    }
+
                 </section>
             );
         }
@@ -38,8 +75,9 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-const Dashboard =
-
-    connect(mapStateToProps, mapDispatchToProps)(dashboard);
+const Dashboard = connect(
+    mapStateToProps,
+    mapDispatchToProps)
+    (dashboard);
 
 export default Dashboard;

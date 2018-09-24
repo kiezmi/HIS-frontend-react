@@ -15,6 +15,14 @@ function reducer(state = initialState, action) {
             let _state = { ...state, auth: null };
             return _state;
         }
+        case 'GET_PATIENTS': {
+            let _state = { ...state, patients: action.patients };
+            return _state;
+        }
+        case 'GET_HISTORIES': {
+            let _state = { ...state, histories: action.histories };
+            return _state;
+        }
         default:
             return state;
     }

@@ -1,4 +1,4 @@
-const users =[
+const users = localStorage.getItem('users') || [
     { role: 'admin', uid: "000", name: "Manolo", surname: "Fernandez", dni: "123456789K", username: "Manolo", password: "0" },
     { role: 'patient', uid: "100", name: "Juan", surname: "Lopez", dni: "123456789J", username: "Juan", password: "100" },
     { role: 'patient', uid: "200", name: "Juanito", surname: "Lopez", dni: "123456789Y", username: "Lito", password: "200" },
@@ -14,6 +14,10 @@ const users =[
 const api = {
     login(username, password) {
         return users.find(user => user.username === username && user.password === password)
+    },
+    createUser(user){
+        users.push(user);
+        localStorage.setItem('users',users);
     }
 }
 export default api;
