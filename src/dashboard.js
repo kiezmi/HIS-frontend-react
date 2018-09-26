@@ -14,26 +14,26 @@ class dashboard extends React.Component {
             const { role, name, uid } = this.props.auth;
             const links = [{
                 to: "/patientList",
-                text: "Patient List",
+                text: "Listado de pacientes",
                 roles: ["admin", "doctor"]
             }, {
                 to: "/historiesList",
-                text: "histories List",
+                text: "Listado de historiales",
                 roles: ["admin", "doctor"]
             },
             {
                 to: "/createUser",
-                text: "Create User",
+                text: "Crear nuevo usuario",
                 roles: ["admin", "technical"]
             },
             {
                 to: "/patientDetails" + uid,
-                text: "Patient List",
+                text: "Ficha paciente",
                 roles: ["admin", "patient"]
             },
             {
                 to: "/historyDetails" + uid,
-                text: "History Details",
+                text: "Detalles de historial",
                 roles: ["admin", "patient"]
             }
 
@@ -52,7 +52,7 @@ class dashboard extends React.Component {
                     {
                         links.map(
                             item => (item.roles.includes(role) &&
-                                <Link to={item.to}>{item.text}</Link>)
+                                <Link to={item.to}><h3>{item.text}</h3></Link>)
                         )
                     }
 
@@ -75,9 +75,6 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-const Dashboard = connect(
-    mapStateToProps,
-    mapDispatchToProps)
-    (dashboard);
+const Dashboard = connect(mapStateToProps,mapDispatchToProps)(dashboard);
 
 export default Dashboard;
