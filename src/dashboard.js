@@ -27,12 +27,12 @@ class dashboard extends React.Component {
                 roles: ["admin", "technical"]
             },
             {
-                to: "/patientDetails" + uid,
+                to: "/patientDetails/" + uid,
                 text: "Ficha paciente",
                 roles: ["admin", "patient"]
             },
             {
-                to: "/historyDetails" + uid,
+                to: "/historyDetails/" + uid,
                 text: "Detalles de historial",
                 roles: ["admin", "patient"]
             }
@@ -55,7 +55,6 @@ class dashboard extends React.Component {
                                 <Link to={item.to}><h3>{item.text}</h3></Link>)
                         )
                     }
-
                 </section>
             );
         }

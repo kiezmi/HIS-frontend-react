@@ -21,9 +21,9 @@ class App extends Component {
               <Route path='/' component={Dashboard} exact />
               <Route path='/login' component={Login} exact />
               <Route path='/patientList' component={PatientList} exact />
-              <Route path='/historieList' component={HistoryList} exact />
-              <Route path='/patientDetails/uid' component={PatientDetails} exact />
-              <Route path='/historyDetails/uid' component={HistoryDetails} exact />
+              <Route path='/historiesList' component={HistoryList} exact />
+              <Route path='/patientDetails/:uid' component={PatientDetails} exact />
+              <Route path='/historyDetails/:uid' component={HistoryDetails} exact />
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>
