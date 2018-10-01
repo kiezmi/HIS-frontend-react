@@ -18,8 +18,7 @@ class patientList extends React.Component {
                     <div key={item.uid}>
                         <div>Nombre: {item.name}</div>
                         <div>Apellidos: {item.surname}</div>
-                        <div>DNI: {item.dni}</div>
-                        <Link to={'patientDetails/' + item.uid}><h4>Ver Historial medico</h4></Link>
+                        <Link to={'patientDetails/' + item.uid}><h4>Ver ficha paciente</h4></Link>
                     </div>
                 ))
             }

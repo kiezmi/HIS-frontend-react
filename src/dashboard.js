@@ -45,7 +45,7 @@ class dashboard extends React.Component {
                         {this.props.auth && <button onClick={this.logout}>Logout</button>}</h5>
                     <h5>
                         {this.props.auth ?
-                            name + 'user is logged in' :
+                            'Usuario '+ name + ' conectado' :
                             'no user logged in'}
                     </h5>
 
