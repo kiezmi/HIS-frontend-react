@@ -52,7 +52,7 @@ class dashboard extends React.Component {
                     {
                         links.map(
                             item => (item.roles.includes(role) &&
-                                <Link to={item.to}><h3>{item.text}</h3></Link>)
+                                <Link key={item.to} to={item.to}><h3>{item.text}</h3></Link>)
                         )
                     }
                 </section>
