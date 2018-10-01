@@ -7,7 +7,7 @@ class patientDetails extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            users: api.getPatientUID(this.state.uid)
+            users: api.getPatientUID(props.auth.uid)
         };
     }
     render() {

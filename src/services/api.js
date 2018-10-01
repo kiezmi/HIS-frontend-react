@@ -33,7 +33,7 @@ const api = {
         return users.filter(patient => patient.role === 'patient')
     },
     getPatientUID(uid){
-        return users.find(user => user.uid === uid)
+        return users.find(patient => patient.uid === uid)
     },
     getHistories() {
         return histories
