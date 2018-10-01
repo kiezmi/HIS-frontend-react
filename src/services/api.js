@@ -30,16 +30,16 @@ const api = {
         localStorage.setItem('users', users);
     },
     getPatients() {
-        return users.filter(patient => patient.role === 'patient')
+        return users.filter(user => user.role === 'patient')
     },
     getPatientUID(uid){
-        return users.find(patient => patient.uid === uid)
+        return users.find(user => user.uid === uid)
     },
     getHistories() {
         return histories
     },
     getHistory(id){
-        return histories.find(user => user.uid === id)
+        return histories.find(user => user.userId === id)
     }
 }
 export default api;

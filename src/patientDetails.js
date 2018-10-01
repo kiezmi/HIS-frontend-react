@@ -3,11 +3,12 @@ import api from './services/api';
 import { Link } from 'react-router-dom';
 
 class patientDetails extends React.Component {
-  
+
     constructor(props) {
         super(props)
         this.state = {
-            users: api.getPatientUID(props.auth.uid)
+           // users: localStorage.getItem('users')
+            //users: api.getPatientUID(uid)
         };
     }
     render() {
@@ -19,7 +20,7 @@ class patientDetails extends React.Component {
                         <div>Nombre: {item.name}</div>
                         <div>Apellidos: {item.surname}</div>
                         <div>DNI: {item.dni}</div>
-                        <Link to={'/historyDetails/' + item.uid}><h4>Ver Historiales medicos</h4></Link>
+                        <Link to={'historyDetails/' + item.uid}><h4>Ver Historiales medicos</h4></Link>
                     </div>
                 ))
             }

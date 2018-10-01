@@ -6,6 +6,7 @@ class patientList extends React.Component {
   
     constructor(props) {
         super(props)
+      //  console.log(props.auth) Undefined
         this.state = {
             users: api.getPatients()
         };
