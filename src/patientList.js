@@ -3,10 +3,9 @@ import api from './services/api';
 import { Link } from 'react-router-dom';
 
 class patientList extends React.Component {
-  
+
     constructor(props) {
         super(props)
-      //  console.log(props.auth) Undefined
         this.state = {
             users: api.getPatients()
         };
