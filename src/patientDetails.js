@@ -18,7 +18,7 @@ class patientDetails extends React.Component {
                 <p> Nombre:{this.state.user.name}</p>
                 <p> Apellidos:{this.state.user.surname}</p>
                 <p> DNI:{this.state.user.dni}</p>
-                <Link to={'historyDetails/' + this.state.user.uid}><h4>Ver Historiales medicos</h4></Link>
+                <Link to={'/historyDetails/' + this.state.user.uid}><h4>Ver Historiales medicos</h4></Link>
             </div>
         )
     }
