@@ -1,58 +1,72 @@
 import React from 'react';
 import api from './services/api';
 import './createUser.css';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
-class createUser extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            username: '',
-            password: '',
-            error: null
-        };
-    }
-    createUser(ev) {
-        ev.preventDefault();
-        const { username, password } = this.state;
-        let user = api.createUser(username, password);
-        if (user) {
-            //valid user
-            this.props.createUserStore(user);
-        } else {
-            // invalid user
-            this.setState({ error: "Username or Password invalid" });
-        }
-    }
-    handleChange(ev) {  //Ejecutas un handleChange para los 2 porque el primero lee la
-        // propiedad name y despues busca en password del evento
-        console.dir(ev.target)
-        this.setState({ [ev.target.name]: ev.target.value, error: null });
-    }
+class CreateUser extends React.Component {
+   constructor(props){
+       super(props);
+       this.state = {
+           role: 'patient',
+           name: '',
+           uid:'',
+           address: '',
+           dni: '',
+           sip: '',
+           username:'',
+           password:''
+       };
 
-    render() {
-        if (this.props.auth) {
-            return <Redirect to="/" />
-        }
-        return (
-            <section className="createUser">
-                {this.state.eror ? (<div className="error">{this.state.error}</div>) : null}
-                <form onSubmit={this.createUser.bind(this)}>
-                    <input type="text" name="username" value={this.state.username} onChange={this.handleChange.bind(this)} />
-                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange.bind(this)} />
-                    <button type="submit">Entrar</button>
-                </form>
-            </section>
-        );
-    }
+       this.handleChange = this.handleChange.bind(this);
+   }
+
+   handleChange(ev) {
+       this.setState({
+           [ev.target.name]: ev.target.value});
+   }
+
+   handleSubmit(ev) {
+       ev.preventDefault();
+       api.createUser(this.state);
+       this.cancelCourse();
+   }
+
+   cancelCourse = () => {
+       document.getElementById("newuser").reset();
+     }
+
+   goBack = () => {this.props.history.goBack();}
+
+   render() {
+       return (
+           <div>
+               <div className="userRegistry">
+                   <form id="newuser" onSubmit={this.handleSubmit.bind(this)}>
+                       <label>Rol: </label>
+                       <select name="role" value={this.state.value} onChange={this.handleChange}>>
+                           <option value="patient">Paciente</option>
+                           <option value="doctor">Doctor</option>
+                           <option value="technical">Técnico</option>
+                       </select>
+                       <label>      ID: </label>
+                       <input type="text" name="uid" placeholder="introduzca id" value={this.state.newid} onChange={this.handleChange}></input><br/>
+                       <label>Nombre: </label>
+                       <input type="text" name="name" placeholder="introduzca nombre" value={this.state.newname} onChange={this.handleChange}></input><br/>
+                       <label>Dirección: </label>
+                       <input type="text" name="address" placeholder="introduzca dirección" value={this.state.newaddress} onChange={this.handleChange}></input><br/>
+                       <label>DNI: </label>
+                       <input type="text" name="dni" placeholder="introduzca DNI" value={this.state.newdni} onChange={this.handleChange}></input><br/>
+                       <label>SIP: </label>
+                       <input type="text" name="sip" placeholder="introduzca SIP" value={this.state.newsip} onChange={this.handleChange}></input><br/>
+                       <label>Nombre de usuario: </label>
+                       <input type="text" name="username" placeholder="introduzca nombre de usuario" value={this.state.newusername} onChange={this.handleChange}></input><br/>
+                       <label>Contraseña: </label>
+                       <input type="text" name="password" placeholder="introduzca contraseña" value={this.state.newpass} onChange={this.handleChange}></input><br/>
+                       <button type="submit">Registrar</button>
+                   </form>
+               </div>
+           </div>
+       )
+   }
 }
 
-const createUser = connect(state =>
-    ({ auth: state.auth }),
-    dispach => ({
-        createUserStore: user => dispach({ type: 'USER_LOGGED_IN', payload: user })
-    })
-)(createUser);
-
-export default createUser;
+export default CreateUser;

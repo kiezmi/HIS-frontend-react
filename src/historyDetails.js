@@ -1,5 +1,6 @@
 import React from 'react';
 import api from './services/api';
+import { Link } from 'react-router-dom';
 
 class historyDetails extends React.Component {
 
@@ -17,9 +18,13 @@ class historyDetails extends React.Component {
                 <p> Paciente:{this.state.user.userId}</p>
                 <p> Doctor:{this.state.user.doctorId}</p>
                 <p> Sintomas:{this.state.user.log}</p>
+                <Link to={'/'}><h4>Volver</h4></Link>
             </div>
         )
     }
 }
+
+
+
 
 export default historyDetails
