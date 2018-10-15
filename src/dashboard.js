@@ -49,12 +49,10 @@ class dashboard extends React.Component {
                             'no user logged in'}
                     </h5>
 
-                    {
-                        links.map(
+                    {links.map(
                             item => (item.roles.includes(role) &&
                                 <Link key={item.to} to={item.to}><h3>{item.text}</h3></Link>)
-                        )
-                    }
+                        )    }
                 </section>
             );
         }

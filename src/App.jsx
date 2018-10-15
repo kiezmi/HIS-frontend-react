@@ -10,6 +10,7 @@ import PatientList from './patientList';
 import HistoryList from './historiesList';
 import PatientDetails from './patientDetails';
 import HistoryDetails from './historyDetails';
+import CreateUser from './createUser';
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
               <Route path='/historiesList' component={HistoryList} exact />
               <Route path='/patientDetails/:uid' component={PatientDetails} exact />
               <Route path='/historyDetails/:uid' component={HistoryDetails} exact />
+              <Route path='/createUser' component={CreateUser} exact />
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>
