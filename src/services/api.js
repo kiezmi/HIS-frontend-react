@@ -1,4 +1,4 @@
-const users = localStorage.getItem('users') || [
+const users = JSON.parse(localStorage.getItem('users')) || [
     {role: 'admin', uid: "000",name: "Manolo", surname: "Fernandez",dni: "123456789K",username: "Manolo",password: "0"},
     {role: 'patient',uid: "100",name: "Juan",surname: "Lopez",dni: "123456789J",username: "Juan",password: "100"},
     {role: 'patient',uid: "200",name: "Juanito",surname: "Lopez",dni: "123456789Y",username: "Lito",password: "200"},
@@ -11,7 +11,7 @@ const users = localStorage.getItem('users') || [
 
 ];
 
-const histories = localStorage.getItem('histories') || [
+const histories = JSON.parse(localStorage.getItem('histories')) || [
     {id: '1',userId: "100",doctorId: "010",log: ["12/2/1999 Rotura de ligamento anterior"]},
     {id: '2',userId: "100",doctorId: "020",log: ["12/2/1978 Rotura de ligamento "]},
     {id: '3',userId: "200",doctorId: "020",log: ["12/2/2000 Rotura de ligamento anterior"]},
@@ -27,7 +27,7 @@ const api = {
     },
     createUser(user) {
         users.push(user);
-        localStorage.setItem('users', users);
+        localStorage.setItem('users', JSON.stringify(users));
     },
     getPatients() {
         return users.filter(user => user.role === 'patient')
@@ -39,9 +39,19 @@ const api = {
         return histories
     },
     getHistory(id) {
-      //  const history = histories.find(user => user.userId === id);
-       // return history ? history : "No encontrado historial"
-        return  histories.find(user => user.userId === id);
+       
+        const history = histories.filter(user => user.userId === id);
+        const error = history ? undefined : "No encontrado historial";
+       return {error, data:history} 
+        //return  histories.find(user => user.userId === id);
+
+        // return {
+            
+        //     data: history,
+        //     error: {
+        //         message: "da"
+        //     }
+        // }
     }
 }
 export default api;

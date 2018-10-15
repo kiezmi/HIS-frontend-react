@@ -8,16 +8,29 @@ class historyDetails extends React.Component {
         super(props)
         //console.log(props.match.params.uid)
         this.state = {
-            user: api.getHistory(props.match.params.uid)
+            ...api.getHistory(props.match.params.uid)
         };
     }
     render() {
+        const { data: user } = this.state;
+        
         return (
             <div>
-                <h1>Bienvenido a sus datos: </h1>
-                <p> Paciente:{this.state.user.userId}</p>
-                <p> Doctor:{this.state.user.doctorId}</p>
-                <p> Sintomas:{this.state.user.log}</p>
+                {
+                    !this.state.error ? (
+                        <div>
+                            <h1>Bienvenido a sus datos: </h1>
+                            <p> Paciente:{user.userId}</p>
+                            <p> Doctor:{user.doctorId}</p>
+                            <p> Sintomas:{user.log}</p>
+
+                        </div>
+                    ) : (
+                            <div>{this.state.error}</div>
+
+                        )
+
+                }
                 <Link to={'/'}><h4>Volver</h4></Link>
             </div>
         )

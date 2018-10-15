@@ -12,30 +12,30 @@ class dashboard extends React.Component {
             return <Redirect to="/login" />
         } else {
             const { role, name, uid } = this.props.auth;
-            const links = [{
-                to: "/patientList",
-                text: "Listado de pacientes",
-                roles: ["admin", "doctor"]
-            }, {
-                to: "/historiesList",
-                text: "Listado de historiales",
-                roles: ["admin", "doctor"]
-            },
-            {
-                to: "/createUser",
-                text: "Crear nuevo usuario",
-                roles: ["admin", "technical"]
-            },
-            {
-                to: "/patientDetails/" + uid,
-                text: "Ficha paciente",
-                roles: ["admin", "patient"]
-            },
-            {
-                to: "/historyDetails/" + uid,
-                text: "Detalles de historial",
-                roles: ["admin", "patient"]
-            }
+            const links = [
+                {
+                    to: "/patientList",
+                     text: "Listado de pacientes",
+                    roles: ["admin", "doctor"]
+                }, { 
+                    to: "/historiesList", 
+                    text: "Listado de historiales", 
+                    roles: ["admin", "doctor"] },
+                {
+                    to: "/createUser",
+                    text: "Crear nuevo usuario",
+                    roles: ["admin", "technical"]
+                },
+                {
+                    to: "/patientDetails/" + uid,
+                    text: "Ficha paciente",
+                    roles: ["admin", "patient"]
+                },
+                {
+                    to: "/historyDetails/" + uid,
+                    text: "Detalles de historial",
+                    roles: ["admin", "patient"]
+                }
 
             ];
             return (
@@ -45,14 +45,14 @@ class dashboard extends React.Component {
                         {this.props.auth && <button onClick={this.logout}>Logout</button>}</h5>
                     <h5>
                         {this.props.auth ?
-                            'Usuario '+ name + ' conectado' :
+                            'Usuario ' + name + ' conectado' :
                             'no user logged in'}
                     </h5>
 
                     {links.map(
-                            item => (item.roles.includes(role) &&
-                                <Link key={item.to} to={item.to}><h3>{item.text}</h3></Link>)
-                        )    }
+                        item => (item.roles.includes(role) &&
+                            <Link key={item.to} to={item.to}><h3>{item.text}</h3></Link>)
+                    )}
                 </section>
             );
         }
@@ -72,6 +72,6 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-const Dashboard = connect(mapStateToProps,mapDispatchToProps)(dashboard);
+const Dashboard = connect(mapStateToProps, mapDispatchToProps)(dashboard);
 
 export default Dashboard;
