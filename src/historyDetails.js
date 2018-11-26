@@ -13,11 +13,10 @@ class historyDetails extends React.Component {
     }
     render() {
         const { data: user } = this.state;
-        
+
         return (
             <div>
-                {
-                    !this.state.error ? (
+                {!this.state.error ? (
                         <div>
                             <h1>Bienvenido a sus datos: </h1>
                             <p> Paciente:{user.userId}</p>
@@ -27,9 +26,7 @@ class historyDetails extends React.Component {
                         </div>
                     ) : (
                             <div>{this.state.error}</div>
-
                         )
-
                 }
                 <Link to={'/'}><h4>Volver</h4></Link>
             </div>
