@@ -7,7 +7,7 @@ html {
 }
 body {
   background: #e0f3fa;
-  background-image: url("/public/fondo.jpg");
+  background-image: url("/fondo.jpg");
  
 }
 body::before {
@@ -382,6 +382,16 @@ template {
 
 /*====================================Targetas====================================== */
 
+.envolturaLogin {
+  position: absolute;
+  /*left y top al 50% para que quede centrado en la pantalla*/
+  left: 50%;
+  top: 50%;
+  margin-left: -160px;
+  margin-top: -200px;
+  width: 300px;
+}
+
 .envoltura {
   position: absolute;
   /*left y top al 50% para que quede centrado en la pantalla*/
@@ -390,6 +400,15 @@ template {
   margin-left: -160px;
   margin-top: -200px;
   width: 330px;
+}
+
+.envolturaGrande {
+  position: absolute;
+  left: 45%;
+  top: 40%;
+  margin-left: -160px;
+  margin-top: -200px;
+  width: 500px;
 }
 
 .contenedor {
@@ -428,4 +447,34 @@ template {
   height: 30px;
   line-height: 15px;
   text-align: center;
+}
+
+/*====================================Formularios====================================== */
+label {
+  color: #666;
+  font-weight: bold
+}
+
+input {
+  box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+  border-radius: 2px;
+  padding-right: 30px;
+  -moz-transition: padding .25s;
+  -webkit-transition: padding .25s;
+  -o-transition: padding .25s;
+  transition: padding .25s;
+}
+
+button.submit {
+  margin-left: 140px;
+}
+
+button.submit:hover {
+  opacity: .85;
+  cursor: pointer;
+}
+
+form,
+p {
+  margin: 0;
 }
