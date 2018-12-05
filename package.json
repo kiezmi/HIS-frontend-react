@@ -2,7 +2,7 @@
   "name": "his-react-redux",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://kiezmi.github.io/his-react-redux",
+  "homepage": "http://kiezmi.github.io/HIS-react-redux",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.5.1",
