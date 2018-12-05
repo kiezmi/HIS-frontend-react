@@ -1,3 +1,4 @@
+/*
 .login {
     height: 100vh;
     display: flex;
@@ -28,4 +29,33 @@
 .login > * {
     margin: 1em 0;
     min-width: 60vw;
-}
+} */
+
+label {
+    color: #666;
+    font-weight: bold
+  }
+  
+  input {
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+    border-radius: 2px;
+    padding-right: 30px;
+    -moz-transition: padding .25s;
+    -webkit-transition: padding .25s;
+    -o-transition: padding .25s;
+    transition: padding .25s;
+  }
+  
+  button.submit {
+      margin-left: 140px; 
+  }
+  
+  button.submit:hover {
+      opacity: .85;
+      cursor: pointer;
+  }
+  
+  form,
+  p {
+    margin: 0;
+  }
