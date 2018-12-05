@@ -1,8 +1,8 @@
 import React from "react";
 import api from "./services/api";
-import "./login.css";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import "./login.css";
 
 class login extends React.Component {
   constructor(props) {
@@ -38,14 +38,14 @@ class login extends React.Component {
     }
     return (
       <section className="login">
-        <div class="envoltura">
-          <div class="contenedor">
-            <div class="cabecera">Login</div>
-            <div class="cuerpo">
+        <div className="envolturaLogin">
+          <div className="contenedor">
+            <div className="cabecera">Login</div>
+            <div className="cuerpo">
               {this.state.eror ? (
                 <div className="error">{this.state.error}</div>
               ) : null}
-              <form onSubmit={this.login.bind(this)}>
+              <form className="login" onSubmit={this.login.bind(this)}>
                 <input
                   type="text"
                   name="username"
@@ -58,10 +58,12 @@ class login extends React.Component {
                   value={this.state.password}
                   onChange={this.handleChange.bind(this)}
                 />
-                <button type="submit">Entrar</button>
+                <button className="submit" type="submit">
+                  Entrar
+                </button>
               </form>
             </div>
-            <div class="footer"> Medical center &#169; 2018 </div>
+            <div className="footer"> Medical center &#169; 2018 </div>
           </div>
         </div>
       </section>
