@@ -1,0 +1,186 @@
+/* === Remove input autofocus webkit === */
+
+*:focus {
+    outline: none;
+}
+
+/* === Form Typography === */
+.formulario h2,
+.formulario label {
+    font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+.form_hint,
+.required_notification {
+    font-size: 15px;
+}
+
+/* === List Styles === */
+
+.formulario ul {
+    width: 450px;
+    list-style-type: none;
+    list-style-position: outside;
+    margin: 0px;
+    padding: 0px;
+}
+
+.formulario li {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+/* === Form Header === */
+
+.formulario h2 {
+    margin: 1;
+    display: inline;
+}
+
+.required_notification {
+    color: #fd0000;
+    margin: 10px 0 0 0;
+    display: inline;
+    font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+/* === Form Elements === */
+
+.formulario label {
+    width: 120px;
+    margin-top: 3px;
+    display: inline-block;
+    padding: 3px;
+}
+
+.formulario .label2 {
+    width: 160px;
+    margin-top: 3px;
+    display: inline-block;
+    padding: 3px;
+}
+
+.formulario .label3 {
+    width: 250px;
+    margin-top: 3px;
+    padding: 3px;
+    display: all;
+    float: none;
+}
+
+.formulario .label4 {
+    width: 3750px;
+    margin-top: 3px;
+    padding: 3px;
+    display: all;
+    float: none;
+}
+
+.formulario .input2 {
+    height: 20px;
+    width: 20px;
+    padding: 5px 8px;
+    color: black;
+}
+
+.formulario input {
+    height: 20px;
+    width: 220px;
+    padding: 5px 8px;
+    color: black;
+}
+
+.formulario button {
+    margin-left: 150px;
+}
+
+/* form element visual styles */
+
+.formulario input,
+.formulario textarea {
+    border: 1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+    border-radius: 2px;
+    padding-right: 30px;
+    -moz-transition: padding .25s;
+    -webkit-transition: padding .25s;
+    -o-transition: padding .25s;
+    transition: padding .25s;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+    background: #fff;
+    border: 1px solid #555;
+    box-shadow: 0 0 3px #aaa;
+    padding-right: 70px;
+}
+
+/* === HTML5 validation styles === */
+
+.formulario input:required,
+.formulario textarea:required {
+    background: #fff url(/red_asterisk.png) no-repeat 98% center;
+}
+
+.formulario input:required:valid,
+.formulario textarea:required:valid {
+    background: #fff url(/valid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: #28921f;
+}
+
+.formulario input:focus:invalid,
+.formulario textarea:focus:invalid {
+    background: #fff url(/invalid.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #d45252;
+    border-color: #b03535;
+}
+
+/* === Form hints === */
+
+.formulario .form_hint {
+    background: #d45252;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    margin-left: 8px;
+    padding: 1px 6px;
+    z-index: 999;
+    /* hints stay above all other elements */
+    position: absolute;
+    /* allows proper formatting if hint is two lines */
+    display: none;
+}
+
+.formulario .form_hint::before {
+    content: "\25C0";
+    color: #d45252;
+    position: absolute;
+    top: 1px;
+    left: -6px;
+}
+
+.formulario input:focus+.form_hint {
+    display: inline;
+}
+
+.formulario input:required:valid+.form_hint {
+    background: #28921f;
+}
+
+.formulario input:required:valid+.form_hint::before {
+    color: #28921f;
+}
+
+/* === Targeta Style === */
+
+.envoltura {
+    position: absolute;
+    /*left y top al 50% para que quede centrado en la pantalla*/
+    left: 45%;
+    top: 40%;
+    margin-left: -160px;
+    margin-top: -200px;
+    width: 500px;
+}
