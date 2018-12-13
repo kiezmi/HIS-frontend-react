@@ -5,28 +5,39 @@ import { Link } from "react-router-dom";
 class historyDetails extends React.Component {
   constructor(props) {
     super(props);
-    //console.log(props.match.params.uid)
+    // console.log(props.match.params.uid)
+    let data = api.getHistoriesFromPatient(props.match.params.uid);
+    let dataDetails = [];
+    let element = {};
+    data.forEach(item => {
+      element = {
+        nombrePaciente: api.getNameFromUid(item.userId),
+        nombreDoctor: api.getNameFromUid(item.doctorId),
+        log: item.log
+      };
+      dataDetails.push(element);
+    });
+    // console.log(JSON.stringify(dataDetails));
     this.state = {
-      ...api.getHistory(props.match.params.uid)
+      dataDetails
     };
   }
   render() {
-    const { data: user } = this.state;
-
     return (
       <div className="envolturaGrande">
         <div className="contenedor">
-          <div className="cabecera">Bienvenido a sus datos</div>
+          <div className="cabecera">
+            <h2>
+              Historiales de {this.state.dataDetails[0].nombrePaciente}
+            </h2>
+          </div>
           <div className="cuerpo">
-            {!this.state.error ? (
-              <div>
-                <p> Paciente:{user.userId}</p>
-                <p> Doctor:{user.doctorId}</p>
-                <p> Sintomas:{user.log}</p>
+            {this.state.dataDetails.map((item, index) => (
+              <div key={index}>
+                <div> Le atendio: {item.nombreDoctor} </div>
+                <div> Patologias: {item.log} </div>
               </div>
-            ) : (
-              <div>{this.state.error}</div>
-            )}
+            ))}
           </div>
           <div className="footer">
             <Link to={"/"}>

@@ -6,21 +6,25 @@ class historiesList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: api.getHistories()
+      users: api.getHistories().map(history => ({
+        ...history,
+        nombrePaciente: api.getNameFromUid(history.userId),
+        nombreDoctor: api.getNameFromUid(history.doctorId)
+      }))
     };
   }
   render() {
     return (
-      <div className="userRegistry">
+      <div className="historylist">
         <div className="envolturaGrande">
           <div className="contenedor">
-            <div className="cabecera">Historias</div>
+          <div className="cabecera"><h1 >Historiales Clinicos</h1></div>
             <div className="cuerpo">
               {this.state.users.map(item => (
                 <div key={item.id}>
-                  <div>ID Paciente: {item.userId}</div>
-                  <div>ID Doctor: {item.doctorId}</div>
-                  <div>Por que vino: {item.log}</div>
+                  <div>Paciente: {item.nombrePaciente}</div>
+                  <div>Doctor: {item.nombreDoctor}</div>
+                  <div>Historia: {item.log}</div>
                   <Link to={"historyDetails/" + item.userId}>
                     <h4>Ver paciente</h4>
                   </Link>

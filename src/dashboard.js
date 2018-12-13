@@ -43,7 +43,7 @@ class dashboard extends React.Component {
           <div className="envoltura">
             <div className="contenedor">
               <div className="cabecera">
-                <h5>Tu rol es: {role} </h5>
+                <h3>Tu rol es: {role} </h3>
                 {/* <h5>
                   {this.props.auth
                     ? "Usuario " + name + " conectado"
