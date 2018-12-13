@@ -7,7 +7,7 @@ html {
 }
 body {
   background: #e0f3fa;
-  background-image: url("/fondo.jpg");
+  /* background-image: url("/fondo.jpg"); */
  
 }
 body::before {
